@@ -24,7 +24,7 @@ helped you, AI tools you've used, and any other resources that are not solely yo
 
 **Purpose**: `The app will display real time weather information and updates depending on a selected city in the USA.`
 
-**Source Assignment(s)**: `HW07, T12, T10, T05`
+**Source Assignment(s)**: `HW07, T12, T10, T05, T11`
 
 **CRC Card(s)**:
   - Create a CRC card for each class that your project will implement.
