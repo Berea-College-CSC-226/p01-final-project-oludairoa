@@ -2,20 +2,19 @@ import pygame, random
 
 
 class MovingBlock(pygame.sprite.Sprite):
+
     move_distance = 10
-    shrink_size = 10
     directions = ["north", "east", "south", "west"]
 
     def __init__(self, screen_size, shrink_size):
         """
-        Represents the automated moving block
 
-        :param screen_size: size of the window, for ensuring the NPC stays on screen
         """
 
         self.screen_size = screen_size
+        self.shrink_size = shrink_size
         super().__init__()
-        self.surf = pygame.image.load('R.png').convert_alpha()
+        self.surf = pygame.image.load('image/R.png').convert_alpha()
         self.surf.set_colorkey((255, 255, 255), pygame.RLEACCEL)
         self.rect = self.surf.get_rect()
         self.rect.move_ip(self.screen_size[0]//4, self.screen_size[1]//4)
@@ -24,9 +23,7 @@ class MovingBlock(pygame.sprite.Sprite):
 
     def get_direction(self):
         """
-        Keeps the Block in the screen.
 
-        :return: None
         """
         if self.rect.bottom >= self.screen_size[1]:
             self.path = "north"
@@ -41,9 +38,7 @@ class MovingBlock(pygame.sprite.Sprite):
 
     def movement(self):
         """
-        Moves the Block around.
 
-        :return: None
         """
         if self.path == "north":
             self.rect.move_ip(0, -self.move_distance)
@@ -63,34 +58,18 @@ class MovingBlock(pygame.sprite.Sprite):
     # create shrink method
 
 
-class UserBlock(pygame.sprite.Sprite):
+class UserBlock(MovingBlock):
     def __init__(self, screen_size, shrink_size):
-        """
-        Represents the player in the game.
 
-        :param screen_size: Screen size, for keeping character on the screen
-        """
-        super().__init__()
-        self.screen_size = screen_size
-        self.surf = pygame.image.load('Grey_Square.svg.png').convert_alpha()
-        self.surf.set_colorkey((255, 255, 255), pygame.RLEACCEL)
-        self.rect = self.surf.get_rect()
-        self.rect.move_ip(self.screen_size[0] // 2, self.screen_size[1] // 2)
+        super().__init__(screen_size, shrink_size)
+        self.surf = pygame.image.load('image/Grey_Square.svg.png').convert_alpha()
+        self.mouse_x, self.mouse_y = pygame.mouse.get_pos()
+
 
 # this function needs to be re-written to make the movement based on mouse drag, not arrow keys
-    def movement(self, keys):
+    def movement(self):
         """
-        Handles up, down, left, right movement events from the user
 
-        :param keys: key presses from pygame event listener
-
-        :return: None
         """
-        if keys[pygame.K_UP]:
-            self.rect.move_ip(0, -3)
-        elif keys[pygame.K_DOWN]:
-            self.rect.move_ip(0, 3)
-        if keys[pygame.K_RIGHT]:
-            self.rect.move_ip(3, 0)
-        elif keys[pygame.K_LEFT]:
-            self.rect.move_ip(-3, 0)
+        if self.path == "":
+            self.rect.move_ip(self.mouse_x, self.mouse_y)

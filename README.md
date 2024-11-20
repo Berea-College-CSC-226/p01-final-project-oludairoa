@@ -56,7 +56,12 @@ Reflect on what you’ve done so far. How’s it going? Are you feeling behind/a
 What has surprised you so far? Describe your general feelings. Be honest with yourself; this section is for you, not me.
 
 ```
-    **Replace this text with your reflection
+    So far I have been working on creating the individual UserBlock and MovingBlock classes. I am working on first getting 
+    them to load onto the screen. I have used several references such as the code for the game from teamwork eleven. 
+    I plan to code a shrink method myself and manipulate the events of the game when the blocks collide. I feel like I'm
+    where I should be, but I would like to figure things out sooner, rather than later. I am worried about possibly not 
+    finishing in time, and if I will ask for help when needed. I feel like what I'm doing right now is easy, I just need 
+    to use the references provided, and then enhance them and personalize them to the game that I am aiming to create.
 ```
 
 ---
