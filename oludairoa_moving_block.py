@@ -14,12 +14,13 @@ class MovingBlock(pygame.sprite.Sprite):
         self.screen_size = screen_size
         self.shrink_size = shrink_size
         super().__init__()
-        self.surf = pygame.image.load('image/R.png').convert_alpha()
+        self.surf = pygame.image.load('image/scottsgraybox.png').convert_alpha()
+        self.surf = pygame.transform.scale(self.surf, (250, 250))
         self.surf.set_colorkey((255, 255, 255), pygame.RLEACCEL)
         self.rect = self.surf.get_rect()
         self.rect.move_ip(self.screen_size[0]//4, self.screen_size[1]//4)
         self.path = random.choice(self.directions)
-        self.position = [0,0]
+        self.position = [0,600]
 
     def get_direction(self):
         """
@@ -62,14 +63,14 @@ class UserBlock(MovingBlock):
     def __init__(self, screen_size, shrink_size):
 
         super().__init__(screen_size, shrink_size)
-        self.surf = pygame.image.load('image/Grey_Square.svg.png').convert_alpha()
+        self.surf = pygame.image.load('image/greenbox_finalProject.png').convert_alpha()
+        self.surf = pygame.transform.scale(self.surf, (250, 250))
         self.mouse_x, self.mouse_y = pygame.mouse.get_pos()
-
+        self.position = [800, 0]
 
 # this function needs to be re-written to make the movement based on mouse drag, not arrow keys
     def movement(self):
         """
 
         """
-        if self.path == "":
-            self.rect.move_ip(self.mouse_x, self.mouse_y)
+        self.rect.move_ip(self.mouse_x, self.mouse_y)

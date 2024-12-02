@@ -30,15 +30,15 @@ class Game:
                     self.running = False
 
 
-            if pygame.sprite.spritecollide(self.user_block, [self.moving_block], False):
-                pass
-            elif pygame.sprite.spritecollide(self.moving_block, [self.user_block], False):
-                pass
-            else:
-                self.moving_block.movement()
-                self.screen.fill('#9CBEBA')
-                self.screen.blit(self.moving_block.surf, self.moving_block.rect)
-                self.screen.blit(self.user_block.surf, self.user_block.rect)
+            # if pygame.sprite.spritecollide(self.user_block, [self.moving_block], False):
+            #     pass
+            # elif pygame.sprite.spritecollide(self.moving_block, [self.user_block], False):
+            #     pass
+            # else:
+            self.moving_block.movement()
+            self.screen.fill('#9CBEBA')
+            self.screen.blit(self.moving_block.surf, self.moving_block.rect)
+            self.screen.blit(self.user_block.surf, self.user_block.rect)
             pygame.display.update()
             self.clock.tick(24)
 
