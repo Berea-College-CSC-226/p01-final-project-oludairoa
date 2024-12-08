@@ -36,6 +36,7 @@ class Game:
             #     pass
             # else:
             self.moving_block.movement()
+            self.user_block.movement()
             self.screen.fill('#9CBEBA')
             self.screen.blit(self.moving_block.surf, self.moving_block.rect)
             self.screen.blit(self.user_block.surf, self.user_block.rect)

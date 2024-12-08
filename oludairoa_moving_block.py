@@ -1,5 +1,5 @@
 import pygame, random
-
+import tkinter as tk
 
 class MovingBlock(pygame.sprite.Sprite):
 
@@ -73,4 +73,5 @@ class UserBlock(MovingBlock):
         """
 
         """
+        self.mouse_x, self.mouse_y = pygame.mouse.get_pos()
         self.rect.move_ip(self.mouse_x, self.mouse_y)

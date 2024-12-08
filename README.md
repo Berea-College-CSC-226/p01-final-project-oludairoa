@@ -1,28 +1,22 @@
-# ❗CSC226 Final Project
+# CSC226 Final Project
 
-## Instructions
-
-❗️Exclamation Marks ❗️indicate action items; you should remove these emoji as you complete/update the items which 
-  they accompany. (This means that your final README should have no ❗️in it!)
-
-️**Author(s)**: Ayomide Oludairo
-
-️**Google Doc Link**: https://docs.google.com/document/d/1uW7oIt1WSFsiUZfLIbqzTaMZ6qWyuRUnadt6qIY-lpY/edit?usp=sharing
+**Author(s)**: Ayomide Oludairo
+**Title**: `The Shrinking Moving Blocks Game`
+**Objective**: `Two Moving Blocks are trapped in a border, one controlled by the user, the other as an NPC. When the 
+blocks collide they shrink in size. The largest block at the end of the 5 minute timer is crowned the winner.`
+**Google Doc Link**: https://docs.google.com/document/d/1uW7oIt1WSFsiUZfLIbqzTaMZ6qWyuRUnadt6qIY-lpY/edit?usp=sharing
 
 ---
 
 ## References 
-Throughout this project, you have likely used outside resources. Reference all ideas which are not your own, 
-and describe how you integrated the ideas or code into your program. This includes online sources, people who have 
-helped you, AI tools you've used, and any other resources that are not solely your own contribution. Update as you go.
+
+1. Project inspired by T11: The Legends of Tuna: Breath of Catnip
+2. T10: Intro to Classes
+3. 
 
 ---
 
 ## Milestone 1: Setup, Planning, Design
-
-**Title**: `The Weather App`
-
-**Purpose**: `The app will display real time weather information and updates depending on a selected city in the USA.`
 
 **Source Assignment(s)**: `HW07, T12, T10, T05, T11`
 
@@ -36,7 +30,7 @@ helped you, AI tools you've used, and any other resources that are not solely yo
   
 ![oludairoa_CRCcard.png](oludairoa_CRCcard.png "My CRC card")
 
-❗️**Branches**: This project will **require** effective use of git. 
+️**Branches**: This project will **require** effective use of git. 
 
 Each partner should create a branch at the beginning of the project, and stay on this branch (or branches of their 
 branch) as they work. When you need to bring each others branches together, do so by merging each other's branches 
@@ -70,9 +64,9 @@ What has surprised you so far? Describe your general feelings. Be honest with yo
 
 Indicate what percentage of the project you have left to complete and how confident you feel. 
 
-❗️**Completion Percentage**: `55%`
+️**Completion Percentage**: `55%`
 
-❗️**Confidence**: Describe how confident you feel about completing this project, and why. Then, describe some 
+️**Confidence**: Describe how confident you feel about completing this project, and why. Then, describe some 
   strategies you can employ to increase the likelihood that you'll be successful in completing this project 
   before the deadline.
 
