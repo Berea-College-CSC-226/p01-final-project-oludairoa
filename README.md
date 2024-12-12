@@ -12,7 +12,89 @@ blocks collide they shrink in size. The largest block at the end of the 5 minute
 
 1. Project inspired by T11: The Legends of Tuna: Breath of Catnip
 2. T10: Intro to Classes
-3. 
+3. T12: Events and GUI's
+
+4. CHATGPT DIALOGUE BELOW:
+
+My question: give me an example code handling collisions between objects using t kinter.
+
+ChatGPT said:
+ChatGPT
+Sure! Here's an example of how you can handle basic collisions between two objects using the tkinter library in Python. 
+This example creates a window with two rectangles that move on the canvas, and the program detects when they collide.
+
+import tkinter as tk
+
+# Function to check if two rectangles overlap
+def check_collision(rect1, rect2):
+    x1, y1, x2, y2 = rect1
+    x3, y3, x4, y4 = rect2
+    return not (x2 < x3 or x4 < x1 or y2 < y3 or y4 < y1)
+
+# Class to manage the movement of the objects
+class MovingObject:
+    def __init__(self, canvas, color, x, y, width, height, dx, dy):
+        self.canvas = canvas
+        self.color = color
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+        self.dx = dx
+        self.dy = dy
+        self.rect = canvas.create_rectangle(x, y, x + width, y + height, fill=color)
+
+    def move(self):
+        self.x += self.dx
+        self.y += self.dy
+        self.canvas.coords(self.rect, self.x, self.y, self.x + self.width, self.y + self.height)
+
+    def get_coords(self):
+        return self.x, self.y, self.x + self.width, self.y + self.height
+
+# Create the Tkinter window and canvas
+root = tk.Tk()
+root.title("Collision Detection Example")
+
+canvas = tk.Canvas(root, width=600, height=400, bg="white")
+canvas.pack()
+
+# Create two moving objects
+object1 = MovingObject(canvas, "blue", 50, 50, 50, 50, 5, 5)
+object2 = MovingObject(canvas, "red", 300, 200, 50, 50, -5, -5)
+
+# Function to update the movement and check for collisions
+def update():
+    object1.move()
+    object2.move()
+
+    # Check if the two objects collide
+    if check_collision(object1.get_coords(), object2.get_coords()):
+        print("Collision detected!")
+
+    # Repeat the movement every 50 milliseconds
+    root.after(50, update)
+
+# Start the movement and collision detection
+update()
+
+# Start the Tkinter main loop
+root.mainloop()
+Explanation:
+Collision Detection:
+
+The function check_collision checks if the two rectangles overlap by comparing their coordinates (top-left and bottom-right corners). If any of the conditions of non-overlap are true, it returns False; otherwise, it returns True.
+Moving Objects:
+
+The MovingObject class represents an object on the canvas. It has attributes for its position (x, y), size (width, height), and movement speed (dx, dy).
+The move method updates the position of the object based on its speed, and get_coords returns the current bounding box of the object.
+Main Loop:
+
+In the update function, the objects' positions are updated, and collisions are checked every 50 milliseconds using root.after(50, update). If a collision is detected, a message is printed in the console.
+How to Run:
+Run the code, and two rectangles will move across the canvas.
+When they collide, the message "Collision detected!" will be printed to the console.
+This is a simple example and can be expanded with more complex physics or responses when collisions are detected (like reversing direction or changing color).
 
 ---
 
