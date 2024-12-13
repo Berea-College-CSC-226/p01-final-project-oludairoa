@@ -53,14 +53,17 @@ class Game:
         """
         Check if any block has reached a size of 0. If so, end the game.
         """
-        if self.user_block.block_size <= 0 or self.npc_block.block_size <= 0:
-            self.root.destroy()  # Close the Tkinter window to end the game
-            print("Game Over!")  # Print game over message to console
+        if self.user_block.block_size <= 0:
+            self.root.destroy()
+            print("Game Over, you lose!")
+        elif self.npc_block.block_size <= 0:
+            self.root.destroy()
+            print("You win!")
 
     def update_game(self):
-        self.npc_block.movement()  # NPC block moves automatically
-        self.check_collision()  # Check for collisions
-        self.check_game_over()  # Check if the game should end
+        self.npc_block.movement()
+        self.check_collision()
+        self.check_game_over()
         self.root.after(50, self.update_game)
 
 def main():
