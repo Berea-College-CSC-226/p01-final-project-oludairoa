@@ -32,18 +32,22 @@ class Game:
             self.handle_collision()
 
     def handle_collision(self):
-        user_size = self.user_block.block_size
-        npc_size = self.npc_block.block_size
-        shrink_amount = 5
+        user_coords = self.user_block.get_coordinates()
+        npc_coords = self.npc_block.get_coordinates()
 
-        # Shrink both blocks based on the collision
-        if user_size > npc_size:
-            self.npc_block.shrink(shrink_amount)
-        elif npc_size > user_size:
-            self.user_block.shrink(shrink_amount)
-        else:
-            self.user_block.shrink(shrink_amount)
-            self.npc_block.shrink(shrink_amount)
+        # Check which block is colliding into the other (based on position and movement)
+        if user_coords[2] > npc_coords[0] and user_coords[0] < npc_coords[2] and \
+                user_coords[3] > npc_coords[1] and user_coords[1] < npc_coords[3]:
+
+            # Shrink only the user block if it is on the left of the NPC block
+            if self.user_block.x < self.npc_block.x:
+                self.user_block.shrink(5)
+            # Shrink only the NPC block if it is on the left of the user block
+            elif self.npc_block.x < self.user_block.x:
+                self.npc_block.shrink(5)
+            # If both blocks are overlapping (same position), shrink only the NPC block (or choose whichever block)
+            else:
+                self.npc_block.shrink(5)
 
     def check_game_over(self):
         """

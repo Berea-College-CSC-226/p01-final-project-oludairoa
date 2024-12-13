@@ -19,7 +19,7 @@ blocks collide they shrink in size. The largest block at the end of the 5 minute
     My question: give me an example code handling collisions between objects using t kinter.
 
     ChatGPT said:
-
+```
     Sure! Here's an example of how you can handle basic collisions between two objects using the tkinter library in Python. 
     This example creates a window with two rectangles that move on the canvas, and the program detects when they collide.
 
@@ -49,7 +49,7 @@ blocks collide they shrink in size. The largest block at the end of the 5 minute
         self.y += self.dy
         self.canvas.coords(self.rect, self.x, self.y, self.x + self.width, self.y + self.height)
 
-    def get_coords(self):
+    def get_coordinates(self):
         return self.x, self.y, self.x + self.width, self.y + self.height
 
     # Create the Tkinter window and canvas
@@ -69,7 +69,7 @@ blocks collide they shrink in size. The largest block at the end of the 5 minute
         object2.move()
 
     # Check if the two objects collide
-    if check_collision(object1.get_coords(), object2.get_coords()):
+    if check_collision(object1.get_coordinates(), object2.get_coordinates()):
         print("Collision detected!")
 
     # Repeat the movement every 50 milliseconds
@@ -88,7 +88,7 @@ blocks collide they shrink in size. The largest block at the end of the 5 minute
     Moving Objects:
 
     The MovingObject class represents an object on the canvas. It has attributes for its position (x, y), size (width, height), and movement speed (dx, dy).
-    The move method updates the position of the object based on its speed, and get_coords returns the current bounding box of the object.
+    The move method updates the position of the object based on its speed, and get_coordinates returns the current bounding box of the object.
     Main Loop:
 
     In the update function, the objects' positions are updated, and collisions are checked every 50 milliseconds using root.after(50, update). If a collision is detected, a message is printed in the console.
@@ -96,13 +96,14 @@ blocks collide they shrink in size. The largest block at the end of the 5 minute
     Run the code, and two rectangles will move across the canvas.
     When they collide, the message "Collision detected!" will be printed to the console.
     This is a simple example and can be expanded with more complex physics or responses when collisions are detected (like reversing direction or changing color).
+```
 
 5. CHATGPT DIALOGUE BELOW
 
     My question: write a very short example on how to bind user control movement using tkinter
 
     CHATGPT said: 
-
+```
     Certainly! Here's a very short example where a user can move a rectangle using the arrow keys in tkinter:
 
     import tkinter as tk
@@ -137,14 +138,14 @@ blocks collide they shrink in size. The largest block at the end of the 5 minute
 
     # Start the Tkinter event loop
     root.mainloop()
-
+```
 
 6. CHATGPT DIALOGUE BELOW
 
     My question: write the main method for what I have created (i pasted my code)
 
     CHATGPT Said: 
-
+```
     Here's the main method that will run the game by initializing the Tkinter window, setting up the game, and starting the Tkinter event loop:
 
 File 3: main.py (Main method to run the game)
@@ -166,6 +167,47 @@ def main():
 
 if __name__ == "__main__":
     main()
+```
+
+7. CHATGPT DIALOGUE BELOW
+
+    My question: how could i modify the program so that only one block shrinks at a time. As it is right now both blocks shrink when they collide.
+
+    ChatGPT said:
+```
+To modify the program so that only one block shrinks at a time, you can introduce a condition that checks which block should shrink based on the direction of the collision. You can choose to shrink the block that is "colliding into" the other block (e.g., based on which block is moving or which block overlaps the other one). This can be done by comparing the relative positions of the blocks and deciding which block to shrink.
+
+Here's a possible way to implement this change:
+
+Update the handle_collision() method in game.py:
+python
+
+def handle_collision(self):
+    user_coords = self.user_block.get_coordinates()
+    npc_coords = self.npc_block.get_coordinates()
+
+    # Check which block is colliding into the other (based on position and movement)
+    if user_coords[2] > npc_coords[0] and user_coords[0] < npc_coords[2] and \
+       user_coords[3] > npc_coords[1] and user_coords[1] < npc_coords[3]:
+
+        # Shrink only the user block if it is on the left of the NPC block
+        if self.user_block.x < self.npc_block.x:
+            self.user_block.shrink(5)
+        # Shrink only the NPC block if it is on the left of the user block
+        elif self.npc_block.x < self.user_block.x:
+            self.npc_block.shrink(5)
+        # If both blocks are overlapping (same position), shrink only the NPC block (or choose whichever block)
+        else:
+            self.npc_block.shrink(5)
+Explanation:
+Collision Detection: The handle_collision() method still detects when the two blocks overlap.
+Conditional Shrinking: Once the collision is detected, we check which block is on the left or right (or whichever side you want to consider the "moving" block). If the user block is to the left of the NPC block, the user block shrinks; otherwise, the NPC block shrinks.
+Handling Overlap: If both blocks are in the same position, you can choose either block to shrink. In this case, I've chosen to shrink the NPC block, but you could modify this if you'd like.
+Key Changes:
+Now, only one block shrinks at a time based on which block is considered the "moving" one (for example, the user block or the NPC block).
+You could adjust the logic to make it shrink the "leading" block or whichever block moves first.
+This approach will give you more control over the shrinking behavior and allow only one block to shrink upon collision.
+```
 ---
 
 ## Milestone 1: Setup, Planning, Design
