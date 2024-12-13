@@ -235,16 +235,21 @@ Indicate what percentage of the project you have left to complete and how confid
 
 ## Milestone 4: Final Code, Presentation, Demo
 
-### ❗User Instructions
+### User Instructions
 In a paragraph, explain how to use your program. Assume the user is starting just after they hit the "Run" button 
 in PyCharm. 
 
-### ❗Errors and Constraints
+```
+To use the program, use the arrow keys to move the green block around the canvas, while the blue block moves automatically. 
+If the two blocks collide, they will shrink in size, and the game will end once any block's size reaches zero.
+```
+
+### Errors and Constraints
 Every program has bugs or features that had to be scrapped for time. These bugs should be tracked in the issue queue. 
 You should already have a few items in here from the prior weeks. Create a new issue for any undocumented errors and 
 deficiencies that remain in your code. Bugs found that aren't acknowledged in the queue will be penalized.
 
-### ❗Reflection
+### Reflection
 In three to four well-written paragraphs, address the following (at a minimum):
 - Why did you select the project that you did?
 - How closely did your final project reflect your initial design?
@@ -252,3 +257,21 @@ In three to four well-written paragraphs, address the following (at a minimum):
 - What was the hardest part of the final project?
 - What would you do differently next time, knowing what you know now?
 - (For partners) How well did you work with your partner? What made it go well? What made it challenging?
+
+
+```
+I selected this project because I wanted to create a simple game. I thought of idea of a moving block game when I first 
+stumbled upon something similar while scrolling on social media. I decided to ass my own spin by making one of the blocks
+controlled by the user. My final project was not at all close to my initial design. I wanted to at first make an easy weather app,
+but once I got this idea, this had to be my final output.
+
+Through this process, I learned how to use Tkinter for handling graphics and events in Python. I also learned how to 
+manage object movement and detect object collisions. It helped me better understand how to structure and organize a game project.
+The hardest part was getting the blocks to shrink properly and ensuring the game ends when a block reaches size zero. 
+There were some issues at first when I tried to use only pygame to complete my project. By being proactive and researching I 
+was able to find a better way to do it with t kinter.
+ 
+Next time, I would focus more on planning the game mechanics and refining the collision logic before starting to code.
+I also need to be more consistent in my project. I had so many different ideas, and implementations of the same idea that
+it was very stressful at times knowing exactly what my final project would end up looking like.
+```
