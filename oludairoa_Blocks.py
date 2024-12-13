@@ -1,6 +1,6 @@
-import tkinter as tk
 import random
 
+# Parent class, similar to NPC which had Good & Bad NPC
 class Block:
     def __init__(self, canvas, color, x, y, block_size=150):
         self.canvas = canvas
@@ -21,12 +21,11 @@ class Block:
         self.x += dx
         self.y += dy
 
-    def get_coords(self):
+    def get_coordinates(self):
         return self.canvas.coords(self.block)
 
     def shrink(self, shrink_size):
         self.block_size -= shrink_size
-        self.block_size = max(self.block_size, 10)  # Prevent the block from disappearing
         self.canvas.coords(
             self.block,
             self.x - self.block_size // 2,
@@ -69,3 +68,23 @@ class MovingBlock(Block):
             self.move(-self.move_distance, 0)
 
         self.get_direction()
+
+class UserControlledBlock(Block):
+    def __init__(self, canvas, x, y, block_size=50):
+        super().__init__(canvas, "green", x, y, block_size)
+        self.move_distance = 10
+
+    # Movement for this block will be based on key press, everything else stays the same
+    # All other methods for this class are inherited from Block
+
+    def move_left(self, event):
+        self.move(-self.move_distance, 0)
+
+    def move_right(self, event):
+        self.move(self.move_distance, 0)
+
+    def move_up(self, event):
+        self.move(0, -self.move_distance)
+
+    def move_down(self, event):
+        self.move(0, self.move_distance)

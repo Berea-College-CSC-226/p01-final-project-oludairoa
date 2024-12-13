@@ -16,23 +16,23 @@ blocks collide they shrink in size. The largest block at the end of the 5 minute
 
 4. CHATGPT DIALOGUE BELOW:
 
-My question: give me an example code handling collisions between objects using t kinter.
+    My question: give me an example code handling collisions between objects using t kinter.
 
-ChatGPT said:
-ChatGPT
-Sure! Here's an example of how you can handle basic collisions between two objects using the tkinter library in Python. 
-This example creates a window with two rectangles that move on the canvas, and the program detects when they collide.
+    ChatGPT said:
 
-import tkinter as tk
+    Sure! Here's an example of how you can handle basic collisions between two objects using the tkinter library in Python. 
+    This example creates a window with two rectangles that move on the canvas, and the program detects when they collide.
 
-# Function to check if two rectangles overlap
-def check_collision(rect1, rect2):
-    x1, y1, x2, y2 = rect1
-    x3, y3, x4, y4 = rect2
-    return not (x2 < x3 or x4 < x1 or y2 < y3 or y4 < y1)
+    import tkinter as tk
 
-# Class to manage the movement of the objects
-class MovingObject:
+    # Function to check if two rectangles overlap
+    def check_collision(rect1, rect2):
+        x1, y1, x2, y2 = rect1
+        x3, y3, x4, y4 = rect2
+        return not (x2 < x3 or x4 < x1 or y2 < y3 or y4 < y1)
+
+    # Class to manage the movement of the objects
+    class MovingObject:
     def __init__(self, canvas, color, x, y, width, height, dx, dy):
         self.canvas = canvas
         self.color = color
@@ -52,21 +52,21 @@ class MovingObject:
     def get_coords(self):
         return self.x, self.y, self.x + self.width, self.y + self.height
 
-# Create the Tkinter window and canvas
-root = tk.Tk()
-root.title("Collision Detection Example")
+    # Create the Tkinter window and canvas
+    root = tk.Tk()
+    root.title("Collision Detection Example")
 
-canvas = tk.Canvas(root, width=600, height=400, bg="white")
-canvas.pack()
+    canvas = tk.Canvas(root, width=600, height=400, bg="white")
+    canvas.pack()
 
-# Create two moving objects
-object1 = MovingObject(canvas, "blue", 50, 50, 50, 50, 5, 5)
-object2 = MovingObject(canvas, "red", 300, 200, 50, 50, -5, -5)
+    # Create two moving objects
+    object1 = MovingObject(canvas, "blue", 50, 50, 50, 50, 5, 5)
+    object2 = MovingObject(canvas, "red", 300, 200, 50, 50, -5, -5)
 
-# Function to update the movement and check for collisions
-def update():
-    object1.move()
-    object2.move()
+    # Function to update the movement and check for collisions
+    def update():
+        object1.move()
+        object2.move()
 
     # Check if the two objects collide
     if check_collision(object1.get_coords(), object2.get_coords()):
@@ -75,32 +75,102 @@ def update():
     # Repeat the movement every 50 milliseconds
     root.after(50, update)
 
-# Start the movement and collision detection
-update()
+    # Start the movement and collision detection
+    update()
 
-# Start the Tkinter main loop
-root.mainloop()
-Explanation:
-Collision Detection:
+    # Start the Tkinter main loop
+    root.mainloop()
 
-The function check_collision checks if the two rectangles overlap by comparing their coordinates (top-left and bottom-right corners). If any of the conditions of non-overlap are true, it returns False; otherwise, it returns True.
-Moving Objects:
+    Explanation:
+    Collision Detection:
 
-The MovingObject class represents an object on the canvas. It has attributes for its position (x, y), size (width, height), and movement speed (dx, dy).
-The move method updates the position of the object based on its speed, and get_coords returns the current bounding box of the object.
-Main Loop:
+    The function check_collision checks if the two rectangles overlap by comparing their coordinates (top-left and bottom-right corners). If any of the conditions of non-overlap are true, it returns False; otherwise, it returns True.
+    Moving Objects:
 
-In the update function, the objects' positions are updated, and collisions are checked every 50 milliseconds using root.after(50, update). If a collision is detected, a message is printed in the console.
-How to Run:
-Run the code, and two rectangles will move across the canvas.
-When they collide, the message "Collision detected!" will be printed to the console.
-This is a simple example and can be expanded with more complex physics or responses when collisions are detected (like reversing direction or changing color).
+    The MovingObject class represents an object on the canvas. It has attributes for its position (x, y), size (width, height), and movement speed (dx, dy).
+    The move method updates the position of the object based on its speed, and get_coords returns the current bounding box of the object.
+    Main Loop:
 
+    In the update function, the objects' positions are updated, and collisions are checked every 50 milliseconds using root.after(50, update). If a collision is detected, a message is printed in the console.
+    How to Run:
+    Run the code, and two rectangles will move across the canvas.
+    When they collide, the message "Collision detected!" will be printed to the console.
+    This is a simple example and can be expanded with more complex physics or responses when collisions are detected (like reversing direction or changing color).
+
+5. CHATGPT DIALOGUE BELOW
+
+    My question: write a very short example on how to bind user control movement using tkinter
+
+    CHATGPT said: 
+
+    Certainly! Here's a very short example where a user can move a rectangle using the arrow keys in tkinter:
+
+    import tkinter as tk
+
+    # Create the main window
+    root = tk.Tk()
+    root.title("Move Rectangle")
+
+    # Create a canvas
+    canvas = tk.Canvas(root, width=400, height=400)
+    canvas.pack()
+
+    # Create a rectangle on the canvas
+    rect = canvas.create_rectangle(50, 50, 100, 100, fill="blue")
+
+    # Function to move the rectangle based on arrow key presses
+    def move_rect(event):
+        if event.keysym == 'Left':
+            canvas.move(rect, -10, 0)
+        elif event.keysym == 'Right':
+            canvas.move(rect, 10, 0)
+        elif event.keysym == 'Up':
+            canvas.move(rect, 0, -10)
+        elif event.keysym == 'Down':
+            canvas.move(rect, 0, 10)
+
+    # Bind the arrow keys to the move_rect function
+    root.bind("<Left>", move_rect)
+    root.bind("<Right>", move_rect)
+    root.bind("<Up>", move_rect)
+    root.bind("<Down>", move_rect)
+
+    # Start the Tkinter event loop
+    root.mainloop()
+
+
+6. CHATGPT DIALOGUE BELOW
+
+    My question: write the main method for what I have created (i pasted my code)
+
+    CHATGPT Said: 
+
+    Here's the main method that will run the game by initializing the Tkinter window, setting up the game, and starting the Tkinter event loop:
+
+File 3: main.py (Main method to run the game)
+python
+Copy code
+import tkinter as tk
+from game import Game  # Import the Game class from game.py
+
+def main():
+    # Initialize the Tkinter root window
+    root = tk.Tk()
+    root.title("Block Collision Game")
+
+    # Set up the game with a canvas size of 500x500
+    game = Game(root, canvas_width=500, canvas_height=500)
+
+    # Start the Tkinter event loop
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()
 ---
 
 ## Milestone 1: Setup, Planning, Design
 
-**Source Assignment(s)**: `HW07, T12, T10, T05, T11`
+**Source Assignment(s)**: `T12, T11, T10`
 
 **CRC Card(s)**:
   - Create a CRC card for each class that your project will implement.
